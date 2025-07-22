@@ -1,0 +1,10 @@
+@import url("https://www.cdnfonts.com/css/sharp-sans");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-custom-dark;
+  color: rgb(253, 254, 255);
+}
