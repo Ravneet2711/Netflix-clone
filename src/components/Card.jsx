@@ -8,7 +8,7 @@ const Card = ({ item }) => {
     if (cardState.cardId === item.id && cardState.ishovered) {
       return;
     }
-    // console.log(e);
+
     const cardElement = e.target;
     const cardRect = cardElement.getBoundingClientRect();
     setCardState({

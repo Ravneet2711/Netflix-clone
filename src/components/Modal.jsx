@@ -53,7 +53,6 @@ const Modal = ({ isOpen, onClose, movieData }) => {
         setsimilarMovies([]);
       } else if (similarMoviesResponse.data) {
         setsimilarMovies(similarMoviesResponse.data.results);
-        console.log(similarMoviesResponse.data.results);
       }
     };
     fetchData();

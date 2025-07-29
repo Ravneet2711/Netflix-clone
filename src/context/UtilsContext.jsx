@@ -4,38 +4,8 @@ import { useCardContext } from "./CardContext";
 const UtilsContext = createContext(null);
 
 export const UtilsProvider = ({ children }) => {
-  //   const [movieList, setMovieList] = useState(() => {
-  //     const stored = localStorage.getItem("movieList");
-  //     return stored ? JSON.parse(stored) : [];
-  //   });
   const { setCardState } = useCardContext();
-  //   const addToFavouriteList = (movie) => {
-  //     console.log(movie, "movie");
-  //     let list = localStorage.getItem("movieList");
-  //     if (list) {
-  //       try {
-  //         const parsedList = JSON.parse(list);
-  //         const exists = parsedList.some((item) => item.id === movie.id);
-  //         if (exists) {
-  //           const newMovieList = parsedList.filter(
-  //             (item) => item.id !== movie.id
-  //           );
-  //           setMovieList(newMovieList);
-  //           localStorage.setItem("movieList", JSON.stringify(newMovieList));
-  //         }
-  //       } catch (error) {
-  //         localStorage.removeItem("movieList");
-  //         setMovieList([]);
-  //       }
-  //     }
-  //     const newMovieList = [...movieList, movie];
-  //     setMovieList(newMovieList);
-  //     try {
-  //       localStorage.setItem("movieList", JSON.stringify(newMovieList));
-  //     } catch (error) {
-  //       console.error("Error saving to local storage:", error);
-  //     }
-  //   };
+
   const [movieList, setMovieList] = useState(() => {
     const stored = localStorage.getItem("movieList");
     return stored ? JSON.parse(stored) : [];

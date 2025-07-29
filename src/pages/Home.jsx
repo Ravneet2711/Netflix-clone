@@ -34,8 +34,6 @@ const Home = () => {
       ]);
 
       if (allGenres?.error) {
-        // console.error(allGenres.error);
-        // setError("Failed to load genres");
         setGenresWithMovies([]);
       }
 
