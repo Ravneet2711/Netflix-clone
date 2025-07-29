@@ -1,6 +1,6 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import logo from "../assets/Netflix-LOGO.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Bell, ChevronRight, Search, X, Menu } from "lucide-react";
 import profilePicture from "../assets/profile.jpg";
 
@@ -8,9 +8,23 @@ const Navbar = () => {
   const [isSearchActive, setIsSearchActive] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState(null);
+  const [isSticky, setIsSticky] = useState(false);
 
   const mainInputRef = useRef(null);
   const mobileInputRef = useRef(null);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsSticky(window.scrollY > 0);
+    };
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const toggleSearch = (type) => {
     if (type === "mobile") {
@@ -21,7 +35,14 @@ const Navbar = () => {
     setIsSearchActive((prev) => !prev);
   };
 
-  const handleSearch = (e) => {};
+  const handleSearch = (e) => {
+    if (e.key === "Enter" && searchQuery.trim()) {
+      setIsSearchActive(false);
+      isMenuOpen && setIsMenuOpen(false);
+      navigate(`/search/${encodeURIComponent(searchQuery)}`);
+      setSearchQuery("");
+    }
+  };
 
   const toggleMenu = () => {
     setIsMenuOpen((prev) => !prev);
@@ -30,7 +51,11 @@ const Navbar = () => {
     setIsMenuOpen(false);
   };
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 flex flex-col px-5 md:px-10 transition-all duration-300 ease-in-out text-white">
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 flex flex-col px-5 md:px-10 transition-all duration-300 ease-in-out text-white ${
+        isSticky ? "bg-black" : "bg-gradient-to-b from-[rgba(0,0,0,0.7)]"
+      }`}
+    >
       <div className="flex items-center justify-between py-4">
         <div className="flex gap-x-6 md:gap-x-8 items-center">
           <Link to="/">
@@ -165,9 +190,15 @@ const Navbar = () => {
           <Link to="/" className="hover:text-gray-300">
             New & Popular
           </Link>
-          <Link to="/mylist" className="hover:text-gray-300">
+          <button
+            className="hover:text-gray-300 text-left"
+            onClick={() => {
+              navigate("/mylist");
+              setIsMenuOpen(false);
+            }}
+          >
             My List
-          </Link>
+          </button>
         </nav>
       </div>
     </header>
