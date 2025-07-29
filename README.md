@@ -4,7 +4,7 @@ A responsive and stylish Netflix Clone built with modern frontend tools like **R
 
 ## 🌐 Live Demo
 
-- **Live Site:** [https://movie-flix-clone.vercel.app/](#)  
+- **Live Site:** [Netflix Clone](https://movie-flix-clone.vercel.app/)  
 - **GitHub Repository:** [Ravneet's Netflix Clone](https://github.com/Ravneet2711/netflix-clone)
 
 ---
