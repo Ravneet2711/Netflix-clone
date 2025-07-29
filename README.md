@@ -17,8 +17,6 @@ A responsive and stylish Netflix Clone built with modern frontend tools like **R
 - [Usage](#usage)
 - [APIs & References](#apis--references)
 - [Configuration](#configuration)
-- [Contributing](#contributing)
-- [License](#license)
 
 ---
 
